@@ -6,11 +6,11 @@ POST http://localhost:3000/usuarios
 Content-Type: application/json
 
 {
-  "nombre": "Diego",
-  "apellido": "Falcon",
-  "ci": "0504131004",
-  "ocupacion": "Estudiante",
-  "direccion": "Latacunga",
+  "nombre": "Yesenia",
+  "apellido": "Fuentes",
+  "ci": "0555555555",
+  "ocupacion": "Tecnologa",
+  "direccion": "Lasso",
   "telefono": "0998765432"
 }
 

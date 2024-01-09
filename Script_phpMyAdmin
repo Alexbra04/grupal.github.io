@@ -1,0 +1,1 @@
+create table usuarios('ci init(11) primary key','nombre varchar(50)','apellido varchar(50)','ocupacion varchar(100)','direccion varchar(100)','telefono int(11)');
