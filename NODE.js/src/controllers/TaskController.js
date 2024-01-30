@@ -16,24 +16,43 @@ function create(req, res) {
     res.render('tasks/create');
 }
 
-function store(req, res){
+//Módulo para renderizar vistas
+const path = require('path');
+
+function store(req, res) {
     const data = req.body;
 
     req.getConnection((err, conn) => {
+        if (err) {
+            res.send('Error al agregar usuario: ' + err);
+        }
         conn.query('INSERT INTO usuarios SET ?', [data], (err, rows) => {
-            res.redirect('/tasks');
+            if (err) {
+                res.send('Error al agregar usuario: ' + err);
+            }
+            // Renderiza la vista ingresarMSJ.hbs después de agregar el usuario exitosamente
+            res.render(path.join(__dirname, '../views/ingresarMSJ'));
         });
     });
 }
 
 function destroy(req, res) {
     const ci = req.body.ci;
+
     req.getConnection((err, conn) => {
+        if (err) {
+            res.send('Error al eliminar usuario: ' + err);
+        }
         conn.query('DELETE FROM usuarios WHERE ci = ?', [ci], (err, rows) => {
-            res.redirect('/tasks');
+            if (err) {
+                res.send('Error al eliminar usuario: ' + err);
+            }
+            // Renderiza la vista eliminarMSJ.hbs después de eliminar exitosamente el usuario
+            res.render(path.join(__dirname, '../views/eliminarMSJ'));
         });
     });
 }
+
 
 function edit(req, res) {
     const ci = req.params.ci;
